@@ -13,6 +13,9 @@
 		ABF6DDB626549015008BC281 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABF6DDB426549015008BC281 /* Main.storyboard */; };
 		ABF6DDB826549018008BC281 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABF6DDB726549018008BC281 /* Assets.xcassets */; };
 		ABF6DDBB26549018008BC281 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABF6DDB926549018008BC281 /* LaunchScreen.storyboard */; };
+		ABF6DDC42654919F008BC281 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF6DDC22654919F008BC281 /* CardCollectionViewCell.swift */; };
+		ABF6DDC52654919F008BC281 /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABF6DDC32654919F008BC281 /* CardCollectionViewCell.xib */; };
+		ABF6DDC7265491C4008BC281 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF6DDC6265491C4008BC281 /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		ABF6DDB726549018008BC281 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABF6DDBA26549018008BC281 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ABF6DDBC26549018008BC281 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABF6DDC22654919F008BC281 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		ABF6DDC32654919F008BC281 /* CardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCollectionViewCell.xib; sourceTree = "<group>"; };
+		ABF6DDC6265491C4008BC281 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,42 @@
 		ABF6DDAD26549015008BC281 /* MemoryWeaknessApp */ = {
 			isa = PBXGroup;
 			children = (
+				ABF6DDCA26549304008BC281 /* Models */,
+				ABF6DDC9265492FD008BC281 /* Controllers */,
+				ABF6DDC8265492F5008BC281 /* Views */,
 				ABF6DDAE26549015008BC281 /* AppDelegate.swift */,
 				ABF6DDB026549015008BC281 /* SceneDelegate.swift */,
-				ABF6DDB226549015008BC281 /* ViewController.swift */,
-				ABF6DDB426549015008BC281 /* Main.storyboard */,
 				ABF6DDB726549018008BC281 /* Assets.xcassets */,
 				ABF6DDB926549018008BC281 /* LaunchScreen.storyboard */,
 				ABF6DDBC26549018008BC281 /* Info.plist */,
 			);
 			path = MemoryWeaknessApp;
+			sourceTree = "<group>";
+		};
+		ABF6DDC8265492F5008BC281 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ABF6DDB426549015008BC281 /* Main.storyboard */,
+				ABF6DDC22654919F008BC281 /* CardCollectionViewCell.swift */,
+				ABF6DDC32654919F008BC281 /* CardCollectionViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ABF6DDC9265492FD008BC281 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				ABF6DDB226549015008BC281 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		ABF6DDCA26549304008BC281 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ABF6DDC6265491C4008BC281 /* Card.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,6 +157,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABF6DDC52654919F008BC281 /* CardCollectionViewCell.xib in Resources */,
 				ABF6DDBB26549018008BC281 /* LaunchScreen.storyboard in Resources */,
 				ABF6DDB826549018008BC281 /* Assets.xcassets in Resources */,
 				ABF6DDB626549015008BC281 /* Main.storyboard in Resources */,
@@ -137,7 +171,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABF6DDC42654919F008BC281 /* CardCollectionViewCell.swift in Sources */,
 				ABF6DDB326549015008BC281 /* ViewController.swift in Sources */,
+				ABF6DDC7265491C4008BC281 /* Card.swift in Sources */,
 				ABF6DDAF26549015008BC281 /* AppDelegate.swift in Sources */,
 				ABF6DDB126549015008BC281 /* SceneDelegate.swift in Sources */,
 			);
