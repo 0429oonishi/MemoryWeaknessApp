@@ -8,5 +8,5 @@
 import UIKit
 
 struct Card {
-    let color: UIColor
+    let image: String
 }

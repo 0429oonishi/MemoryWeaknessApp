@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		ABF6DDAF26549015008BC281 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF6DDAE26549015008BC281 /* AppDelegate.swift */; };
 		ABF6DDB126549015008BC281 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF6DDB026549015008BC281 /* SceneDelegate.swift */; };
-		ABF6DDB326549015008BC281 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF6DDB226549015008BC281 /* ViewController.swift */; };
+		ABF6DDB326549015008BC281 /* MemoryWeaknessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF6DDB226549015008BC281 /* MemoryWeaknessViewController.swift */; };
 		ABF6DDB626549015008BC281 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABF6DDB426549015008BC281 /* Main.storyboard */; };
 		ABF6DDB826549018008BC281 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABF6DDB726549018008BC281 /* Assets.xcassets */; };
 		ABF6DDBB26549018008BC281 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABF6DDB926549018008BC281 /* LaunchScreen.storyboard */; };
@@ -22,7 +22,7 @@
 		ABF6DDAB26549015008BC281 /* MemoryWeaknessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoryWeaknessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABF6DDAE26549015008BC281 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABF6DDB026549015008BC281 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ABF6DDB226549015008BC281 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ABF6DDB226549015008BC281 /* MemoryWeaknessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryWeaknessViewController.swift; sourceTree = "<group>"; };
 		ABF6DDB526549015008BC281 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ABF6DDB726549018008BC281 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABF6DDBA26549018008BC281 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 		ABF6DDC9265492FD008BC281 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				ABF6DDB226549015008BC281 /* ViewController.swift */,
+				ABF6DDB226549015008BC281 /* MemoryWeaknessViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -172,7 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABF6DDC42654919F008BC281 /* CardCollectionViewCell.swift in Sources */,
-				ABF6DDB326549015008BC281 /* ViewController.swift in Sources */,
+				ABF6DDB326549015008BC281 /* MemoryWeaknessViewController.swift in Sources */,
 				ABF6DDC7265491C4008BC281 /* Card.swift in Sources */,
 				ABF6DDAF26549015008BC281 /* AppDelegate.swift in Sources */,
 				ABF6DDB126549015008BC281 /* SceneDelegate.swift in Sources */,
