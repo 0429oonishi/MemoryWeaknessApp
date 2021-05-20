@@ -11,6 +11,20 @@ protocol CardCollectionViewCellDelegate: AnyObject {
     func didTapped(isCorrect: Bool)
 }
 
+private enum TapCount: Int {
+    case zero
+    case one
+    mutating func adjust(completion: () -> Void) {
+        switch self {
+            case .zero:
+                self = .one
+            case .one:
+                completion()
+                self = .zero
+        }
+    }
+}
+
 final class CardCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet private weak var label: UILabel!
@@ -18,12 +32,7 @@ final class CardCollectionViewCell: UICollectionViewCell {
     static var identifier: String { String(describing: self) }
     static var nib: UINib { UINib(nibName: String(describing: self), bundle: nil) }
     private var isDisplayed = true
-    private var tappedCount = 0
     var delegate: CardCollectionViewCellDelegate?
-    private enum TapCount {
-        case one
-        case two
-    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard isDisplayed else { return }
@@ -32,15 +41,11 @@ final class CardCollectionViewCell: UICollectionViewCell {
     }
     
     private func countCardDidSelected() {
-        tappedCount = UserDefaults.standard.integer(forKey: .tappedCount)
+        let countNum = UserDefaults.standard.integer(forKey: .tappedCount)
+        guard var tapCount = TapCount(rawValue: countNum) else { fatalError() }
         let isCorrect = isCorrect()
-        if tappedCount == 0 {
-            tappedCount = 1
-        } else if tappedCount == 1 {
-            tappedCount = 0
-            delegate?.didTapped(isCorrect: isCorrect)
-        }
-        UserDefaults.standard.set(tappedCount, forKey: .tappedCount)
+        tapCount.adjust { delegate?.didTapped(isCorrect: isCorrect) }
+        UserDefaults.standard.set(tapCount.rawValue, forKey: .tappedCount)
     }
     
     private func isCorrect() -> Bool {

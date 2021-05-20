@@ -7,6 +7,17 @@
 
 import UIKit
 
+private enum Player {
+    case left
+    case right
+    mutating func toggle() {
+        switch self {
+            case .left: self = .right
+            case .right: self = .left
+        }
+    }
+}
+
 final class MemoryWeaknessViewController: UIViewController {
     
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -16,10 +27,9 @@ final class MemoryWeaknessViewController: UIViewController {
     @IBOutlet private weak var rightPlayerScoreLabel: UILabel!
     
     private var cards = [Card]()
-    private var isLeftPlayerPlaying = true
+    private var player: Player = .left
     private var leftPlayerScore = 0
     private var rightPlayerScore = 0
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,29 +103,28 @@ extension MemoryWeaknessViewController: UICollectionViewDataSource {
 
 extension MemoryWeaknessViewController: CardCollectionViewCellDelegate {
     func didTapped(isCorrect: Bool) {
-        if isLeftPlayerPlaying {
-            switchLeftPlayer(isCorrect: isCorrect)
-        } else {
-            switchRightPlayer(isCorrect: isCorrect)
+        switch player {
+            case .left: changeRightPlayer()
+            case .right: changeLeftPlayer()
         }
-        isLeftPlayerPlaying.toggle()
-    }
-    
-    private func switchLeftPlayer(isCorrect: Bool) {
-        leftPlayerLabel.backgroundColor = .clear
-        rightPlayerLabel.backgroundColor = .blue
-        if isCorrect {
-            leftPlayerScore += 2
-            leftPlayerScoreLabel.text = "\(leftPlayerScore)"
+        player.toggle()
+        
+        func changeRightPlayer() {
+            leftPlayerLabel.backgroundColor = .clear
+            rightPlayerLabel.backgroundColor = .blue
+            if isCorrect {
+                leftPlayerScore += 2
+                leftPlayerScoreLabel.text = "\(leftPlayerScore)"
+            }
         }
-    }
-    
-    private func switchRightPlayer(isCorrect: Bool) {
-        leftPlayerLabel.backgroundColor = .blue
-        rightPlayerLabel.backgroundColor = .clear
-        if isCorrect {
-            rightPlayerScore += 2
-            rightPlayerScoreLabel.text = "\(rightPlayerScore)"
+        
+        func changeLeftPlayer() {
+            leftPlayerLabel.backgroundColor = .blue
+            rightPlayerLabel.backgroundColor = .clear
+            if isCorrect {
+                rightPlayerScore += 2
+                rightPlayerScoreLabel.text = "\(rightPlayerScore)"
+            }
         }
     }
     
