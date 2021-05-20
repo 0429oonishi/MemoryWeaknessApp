@@ -30,7 +30,10 @@ final class MemoryWeaknessViewController: UIViewController {
             let imageName = imageNames.randomElement()!
             cards.append(Card(image: imageName))
         }
-
+        
+        // あとでユーザーがどちらが先行かを選択できるようにする
+        leftPlayerLabel.backgroundColor = .blue
+        
         // ビルドするたびに消す
         UserDefaults.standard.removeObject(forKey: "key")
         
