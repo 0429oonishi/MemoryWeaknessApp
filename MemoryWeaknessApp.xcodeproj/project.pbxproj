@@ -11,7 +11,7 @@
 		ABF6DDAF26549015008BC281 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF6DDAE26549015008BC281 /* AppDelegate.swift */; };
 		ABF6DDB126549015008BC281 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF6DDB026549015008BC281 /* SceneDelegate.swift */; };
 		ABF6DDB326549015008BC281 /* MemoryWeaknessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF6DDB226549015008BC281 /* MemoryWeaknessViewController.swift */; };
-		ABF6DDB626549015008BC281 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABF6DDB426549015008BC281 /* Main.storyboard */; };
+		ABF6DDB626549015008BC281 /* MemoryWeakness.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABF6DDB426549015008BC281 /* MemoryWeakness.storyboard */; };
 		ABF6DDB826549018008BC281 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABF6DDB726549018008BC281 /* Assets.xcassets */; };
 		ABF6DDBB26549018008BC281 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABF6DDB926549018008BC281 /* LaunchScreen.storyboard */; };
 		ABF6DDC42654919F008BC281 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF6DDC22654919F008BC281 /* CardCollectionViewCell.swift */; };
@@ -25,7 +25,7 @@
 		ABF6DDAE26549015008BC281 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABF6DDB026549015008BC281 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		ABF6DDB226549015008BC281 /* MemoryWeaknessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryWeaknessViewController.swift; sourceTree = "<group>"; };
-		ABF6DDB526549015008BC281 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		ABF6DDB526549015008BC281 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MemoryWeakness.storyboard; sourceTree = "<group>"; };
 		ABF6DDB726549018008BC281 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABF6DDBA26549018008BC281 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ABF6DDBC26549018008BC281 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 		ABF6DDC8265492F5008BC281 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				ABF6DDB426549015008BC281 /* Main.storyboard */,
+				ABF6DDB426549015008BC281 /* MemoryWeakness.storyboard */,
 				ABF6DDC22654919F008BC281 /* CardCollectionViewCell.swift */,
 				ABF6DDC32654919F008BC281 /* CardCollectionViewCell.xib */,
 			);
@@ -171,7 +171,7 @@
 				ABF6DDC52654919F008BC281 /* CardCollectionViewCell.xib in Resources */,
 				ABF6DDBB26549018008BC281 /* LaunchScreen.storyboard in Resources */,
 				ABF6DDB826549018008BC281 /* Assets.xcassets in Resources */,
-				ABF6DDB626549015008BC281 /* Main.storyboard in Resources */,
+				ABF6DDB626549015008BC281 /* MemoryWeakness.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,12 +194,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		ABF6DDB426549015008BC281 /* Main.storyboard */ = {
+		ABF6DDB426549015008BC281 /* MemoryWeakness.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				ABF6DDB526549015008BC281 /* Base */,
 			);
-			name = Main.storyboard;
+			name = MemoryWeakness.storyboard;
 			sourceTree = "<group>";
 		};
 		ABF6DDB926549018008BC281 /* LaunchScreen.storyboard */ = {
