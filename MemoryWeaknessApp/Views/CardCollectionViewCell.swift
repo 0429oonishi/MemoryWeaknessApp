@@ -19,44 +19,41 @@ final class CardCollectionViewCell: UICollectionViewCell {
     static var nib: UINib { UINib(nibName: String(describing: self), bundle: nil) }
     private var isDisplayed = true
     private var tappedCount = 0
-    var onTapEvent: (() -> Void)?
     var delegate: CardCollectionViewCellDelegate?
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    private enum TapCount {
+        case one
+        case two
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard isDisplayed else { return }
-        
-        
-        guard let newSelectedText = label.text else { return }
-        let oldSelectedText = UserDefaults.standard.string(forKey: "SelectedText") ?? ""
-        if !oldSelectedText.isEmpty {
-            if oldSelectedText == newSelectedText {
-                print("same")
-            } else {
-                print("wrong")
-            }
-        }
-        UserDefaults.standard.set(newSelectedText, forKey: "SelectedText")
-        label.text = ""
-        backgroundColor = .clear
-        isDisplayed = false
-        
-        
-        tappedCount = UserDefaults.standard.integer(forKey: "TappedCount")
+        countCardDidSelected()
+        hideCard()
+    }
+    
+    private func countCardDidSelected() {
+        tappedCount = UserDefaults.standard.integer(forKey: .tappedCount)
+        let isCorrect = isCorrect()
         if tappedCount == 0 {
             tappedCount = 1
         } else if tappedCount == 1 {
             tappedCount = 0
-            let isCorrect = newSelectedText == oldSelectedText
             delegate?.didTapped(isCorrect: isCorrect)
-            onTapEvent?()
         }
-        UserDefaults.standard.set(tappedCount, forKey: "TappedCount")
-        
+        UserDefaults.standard.set(tappedCount, forKey: .tappedCount)
+    }
+    
+    private func isCorrect() -> Bool {
+        let newSelectedText = label.text ?? ""
+        let oldSelectedText = UserDefaults.standard.string(forKey: .selectedText) ?? ""
+        UserDefaults.standard.set(newSelectedText, forKey: .selectedText)
+        return newSelectedText == oldSelectedText
+    }
+    
+    private func hideCard() {
+        label.text = ""
+        backgroundColor = .clear
+        isDisplayed = false
     }
     
 }

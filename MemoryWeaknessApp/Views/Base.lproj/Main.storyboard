@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mXq-lD-cT4">
-                                <rect key="frame" x="0.0" y="44" width="414" height="414"/>
+                                <rect key="frame" x="50" y="94" width="314" height="377"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="mXq-lD-cT4" secondAttribute="height" id="7RI-GH-afA"/>
+                                    <constraint firstAttribute="width" secondItem="mXq-lD-cT4" secondAttribute="height" multiplier="5:6" id="7RI-GH-afA"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ou5-8z-R4Y">
                                     <size key="itemSize" width="128" height="128"/>
@@ -41,7 +41,7 @@
                                 </cells>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="rcR-sK-2b8">
-                                <rect key="frame" x="50" y="508" width="314" height="210"/>
+                                <rect key="frame" x="50" y="521" width="314" height="210"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="I4X-kF-Iez">
                                         <rect key="frame" x="0.0" y="0.0" width="147" height="210"/>
@@ -98,9 +98,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                         <constraints>
-                            <constraint firstItem="mXq-lD-cT4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6Gf-vO-9ZH"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mXq-lD-cT4" secondAttribute="trailing" id="8iG-0r-TRL"/>
-                            <constraint firstItem="mXq-lD-cT4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9G1-9n-61Y"/>
+                            <constraint firstItem="mXq-lD-cT4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="6Gf-vO-9ZH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mXq-lD-cT4" secondAttribute="trailing" constant="50" id="8iG-0r-TRL"/>
+                            <constraint firstItem="mXq-lD-cT4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="9G1-9n-61Y"/>
                             <constraint firstItem="rcR-sK-2b8" firstAttribute="top" secondItem="mXq-lD-cT4" secondAttribute="bottom" constant="50" id="NMh-Bb-QdZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rcR-sK-2b8" secondAttribute="trailing" constant="50" id="es7-Qd-afp"/>
                             <constraint firstItem="rcR-sK-2b8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="leK-yW-Mz8"/>

@@ -24,22 +24,14 @@ final class MemoryWeaknessViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.dataSource = self
-        collectionView.register(CardCollectionViewCell.nib,
-                                forCellWithReuseIdentifier: CardCollectionViewCell.identifier)
-        
-        let imageNames = ["1", "2", "3"]
-        for _ in 0..<25 {
-            let imageName = imageNames.randomElement()!
-            cards.append(Card(image: imageName))
-        }
-        
+        configureCollectionView()
+        configureCards()
         // あとでユーザーがどちらが先行かを選択できるようにする
         leftPlayerLabel.backgroundColor = .blue
         
         // ビルドするたびに消す
-        UserDefaults.standard.removeObject(forKey: "SelectedText")
-        UserDefaults.standard.removeObject(forKey: "TappedCount")
+        UserDefaults.standard.removeObject(forKey: .selectedText)
+        UserDefaults.standard.removeObject(forKey: .tappedCount)
         
     }
     
@@ -48,6 +40,20 @@ final class MemoryWeaknessViewController: UIViewController {
         
         configureCollectionViewLayout()
         
+    }
+    
+    private func configureCards() {
+        let imageNames = ["1", "2", "3", "4", "5"]
+        for _ in 0..<30 {
+            let imageName = imageNames.randomElement()!
+            cards.append(Card(image: imageName))
+        }
+    }
+    
+    private func configureCollectionView() {
+        collectionView.dataSource = self
+        collectionView.register(CardCollectionViewCell.nib,
+                                forCellWithReuseIdentifier: CardCollectionViewCell.identifier)
     }
     
     private func configureCollectionViewLayout() {
@@ -81,31 +87,36 @@ extension MemoryWeaknessViewController: UICollectionViewDataSource {
         let card = cards[indexPath.item]
         cell.configure(card: card)
         cell.delegate = self
-        cell.onTapEvent = { [weak self] in
-            guard let self = self else { return }
-            if self.isLeftPlayerPlaying {
-                self.leftPlayerLabel.backgroundColor = .clear
-                self.rightPlayerLabel.backgroundColor = .blue
-            } else {
-                self.leftPlayerLabel.backgroundColor = .blue
-                self.rightPlayerLabel.backgroundColor = .clear
-            }
-            self.isLeftPlayerPlaying.toggle()
-        }
         return cell
     }
 }
 
 extension MemoryWeaknessViewController: CardCollectionViewCellDelegate {
     func didTapped(isCorrect: Bool) {
+        if isLeftPlayerPlaying {
+            switchLeftPlayer(isCorrect: isCorrect)
+        } else {
+            switchRightPlayer(isCorrect: isCorrect)
+        }
+        isLeftPlayerPlaying.toggle()
+    }
+    
+    private func switchLeftPlayer(isCorrect: Bool) {
+        leftPlayerLabel.backgroundColor = .clear
+        rightPlayerLabel.backgroundColor = .blue
         if isCorrect {
-            if isLeftPlayerPlaying {
-                leftPlayerScore += 2
-                leftPlayerScoreLabel.text = "\(leftPlayerScore)"
-            } else {
-                rightPlayerScore += 2
-                rightPlayerScoreLabel.text = "\(rightPlayerScore)"
-            }
+            leftPlayerScore += 2
+            leftPlayerScoreLabel.text = "\(leftPlayerScore)"
         }
     }
+    
+    private func switchRightPlayer(isCorrect: Bool) {
+        leftPlayerLabel.backgroundColor = .blue
+        rightPlayerLabel.backgroundColor = .clear
+        if isCorrect {
+            rightPlayerScore += 2
+            rightPlayerScoreLabel.text = "\(rightPlayerScore)"
+        }
+    }
+    
 }
