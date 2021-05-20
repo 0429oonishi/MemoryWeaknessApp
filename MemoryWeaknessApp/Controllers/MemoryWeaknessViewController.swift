@@ -10,7 +10,13 @@ import UIKit
 final class MemoryWeaknessViewController: UIViewController {
     
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var leftPlayerLabel: UILabel!
+    @IBOutlet private weak var rightPlayerLabel: UILabel!
+    @IBOutlet private weak var leftPlayerScoreLabel: UILabel!
+    @IBOutlet private weak var rightPlayerScoreLabel: UILabel!
+    
     private var cards = [Card]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +26,13 @@ final class MemoryWeaknessViewController: UIViewController {
                                 forCellWithReuseIdentifier: CardCollectionViewCell.identifier)
         
         let imageNames = ["1", "2", "3"]
-        for _ in 0...30 {
+        for _ in 0..<25 {
             let imageName = imageNames.randomElement()!
             cards.append(Card(image: imageName))
         }
+
+        // ビルドするたびに消す
+        UserDefaults.standard.removeObject(forKey: "key")
         
     }
     
