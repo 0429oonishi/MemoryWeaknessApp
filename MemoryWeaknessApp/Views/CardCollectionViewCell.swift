@@ -14,16 +14,23 @@ final class CardCollectionViewCell: UICollectionViewCell {
     static var identifier: String { String(describing: self) }
     static var nib: UINib { UINib(nibName: String(describing: self), bundle: nil) }
     private var isDisplayed = true
-    
+    private var tappedCount = 0
+    var onTapEvent: (() -> Void)?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let newSelectedText = label.text else { return }
         guard isDisplayed else { return }
-        let oldSelectedText = UserDefaults.standard.string(forKey: "key") ?? ""
+        hideCard()
+        countCardDidSelected()
+    }
+    
+    private func hideCard() {
+        guard let newSelectedText = label.text else { return }
+        let oldSelectedText = UserDefaults.standard.string(forKey: "SelectedText") ?? ""
         if !oldSelectedText.isEmpty {
             if oldSelectedText == newSelectedText {
                 print("same")
@@ -31,10 +38,21 @@ final class CardCollectionViewCell: UICollectionViewCell {
                 print("wrong")
             }
         }
-        UserDefaults.standard.set(newSelectedText, forKey: "key")
+        UserDefaults.standard.set(newSelectedText, forKey: "SelectedText")
         label.text = ""
         backgroundColor = .clear
         isDisplayed = false
+    }
+    
+    private func countCardDidSelected() {
+        tappedCount = UserDefaults.standard.integer(forKey: "TappedCount")
+        if tappedCount == 0 {
+            tappedCount = 1
+        } else if tappedCount == 1 {
+            tappedCount = 0
+            onTapEvent?()
+        }
+        UserDefaults.standard.set(tappedCount, forKey: "TappedCount")
     }
     
 }

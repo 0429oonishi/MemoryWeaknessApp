@@ -16,7 +16,7 @@ final class MemoryWeaknessViewController: UIViewController {
     @IBOutlet private weak var rightPlayerScoreLabel: UILabel!
     
     private var cards = [Card]()
-    
+    private var isLeftPlayerPlaying = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,8 @@ final class MemoryWeaknessViewController: UIViewController {
         leftPlayerLabel.backgroundColor = .blue
         
         // ビルドするたびに消す
-        UserDefaults.standard.removeObject(forKey: "key")
+        UserDefaults.standard.removeObject(forKey: "SelectedText")
+        UserDefaults.standard.removeObject(forKey: "TappedCount")
         
     }
     
@@ -76,6 +77,17 @@ extension MemoryWeaknessViewController: UICollectionViewDataSource {
         ) as!CardCollectionViewCell
         let card = cards[indexPath.item]
         cell.configure(card: card)
+        cell.onTapEvent = { [weak self] in
+            guard let self = self else { return }
+            if self.isLeftPlayerPlaying {
+                self.leftPlayerLabel.backgroundColor = .clear
+                self.rightPlayerLabel.backgroundColor = .blue
+            } else {
+                self.leftPlayerLabel.backgroundColor = .blue
+                self.rightPlayerLabel.backgroundColor = .clear
+            }
+            self.isLeftPlayerPlaying.toggle()
+        }
         return cell
     }
 }
