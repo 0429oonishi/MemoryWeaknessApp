@@ -17,6 +17,9 @@ final class MemoryWeaknessViewController: UIViewController {
     
     private var cards = [Card]()
     private var isLeftPlayerPlaying = true
+    private var leftPlayerScore = 0
+    private var rightPlayerScore = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +80,7 @@ extension MemoryWeaknessViewController: UICollectionViewDataSource {
         ) as!CardCollectionViewCell
         let card = cards[indexPath.item]
         cell.configure(card: card)
+        cell.delegate = self
         cell.onTapEvent = { [weak self] in
             guard let self = self else { return }
             if self.isLeftPlayerPlaying {
@@ -89,5 +93,19 @@ extension MemoryWeaknessViewController: UICollectionViewDataSource {
             self.isLeftPlayerPlaying.toggle()
         }
         return cell
+    }
+}
+
+extension MemoryWeaknessViewController: CardCollectionViewCellDelegate {
+    func didTapped(isCorrect: Bool) {
+        if isCorrect {
+            if isLeftPlayerPlaying {
+                leftPlayerScore += 2
+                leftPlayerScoreLabel.text = "\(leftPlayerScore)"
+            } else {
+                rightPlayerScore += 2
+                rightPlayerScoreLabel.text = "\(rightPlayerScore)"
+            }
+        }
     }
 }

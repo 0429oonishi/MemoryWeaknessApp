@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CardCollectionViewCellDelegate: AnyObject {
+    func didTapped(isCorrect: Bool)
+}
+
 final class CardCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet private weak var label: UILabel!
@@ -16,6 +20,7 @@ final class CardCollectionViewCell: UICollectionViewCell {
     private var isDisplayed = true
     private var tappedCount = 0
     var onTapEvent: (() -> Void)?
+    var delegate: CardCollectionViewCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,11 +29,8 @@ final class CardCollectionViewCell: UICollectionViewCell {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard isDisplayed else { return }
-        hideCard()
-        countCardDidSelected()
-    }
-    
-    private func hideCard() {
+        
+        
         guard let newSelectedText = label.text else { return }
         let oldSelectedText = UserDefaults.standard.string(forKey: "SelectedText") ?? ""
         if !oldSelectedText.isEmpty {
@@ -42,17 +44,19 @@ final class CardCollectionViewCell: UICollectionViewCell {
         label.text = ""
         backgroundColor = .clear
         isDisplayed = false
-    }
-    
-    private func countCardDidSelected() {
+        
+        
         tappedCount = UserDefaults.standard.integer(forKey: "TappedCount")
         if tappedCount == 0 {
             tappedCount = 1
         } else if tappedCount == 1 {
             tappedCount = 0
+            let isCorrect = newSelectedText == oldSelectedText
+            delegate?.didTapped(isCorrect: isCorrect)
             onTapEvent?()
         }
         UserDefaults.standard.set(tappedCount, forKey: "TappedCount")
+        
     }
     
 }
