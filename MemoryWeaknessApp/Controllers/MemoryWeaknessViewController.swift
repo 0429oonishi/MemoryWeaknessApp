@@ -127,6 +127,10 @@ extension MemoryWeaknessViewController: CardCollectionViewCellDelegate {
                 rightPlayerScoreLabel.text = "\(rightPlayerScore)"
             }
         }
+        
+        if (leftPlayerScore + rightPlayerScore) == cards.count {
+            print("全てのカードがめくられた")
+        }
     }
     
 }
