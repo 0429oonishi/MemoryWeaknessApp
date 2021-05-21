@@ -74,8 +74,8 @@
 			children = (
 				ABA4FD7626570C7300FB13AF /* Extensions */,
 				ABF6DDCA26549304008BC281 /* Models */,
-				ABF6DDC9265492FD008BC281 /* Controllers */,
 				ABF6DDC8265492F5008BC281 /* Views */,
+				ABF6DDC9265492FD008BC281 /* Controllers */,
 				ABF6DDAE26549015008BC281 /* AppDelegate.swift */,
 				ABF6DDB026549015008BC281 /* SceneDelegate.swift */,
 				ABF6DDB726549018008BC281 /* Assets.xcassets */,
