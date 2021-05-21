@@ -104,28 +104,21 @@ extension MemoryWeaknessViewController: UICollectionViewDataSource {
 
 extension MemoryWeaknessViewController: CardCollectionViewCellDelegate {
     func didTapped(isCorrect: Bool) {
-        switch player {
-            case .left: changeRightPlayer()
-            case .right: changeLeftPlayer()
-        }
-        player.toggle()
-        
-        func changeRightPlayer() {
-            leftPlayerLabel.backgroundColor = .clear
-            rightPlayerLabel.backgroundColor = .blue
-            if isCorrect {
+        switch (player, isCorrect) {
+            case (.left, true):
                 leftPlayerScore += 2
                 leftPlayerScoreLabel.text = "\(leftPlayerScore)"
-            }
-        }
-        
-        func changeLeftPlayer() {
-            leftPlayerLabel.backgroundColor = .blue
-            rightPlayerLabel.backgroundColor = .clear
-            if isCorrect {
+            case (.left, false):
+                player.toggle()
+                leftPlayerLabel.backgroundColor = .clear
+                rightPlayerLabel.backgroundColor = .blue
+            case (.right, true):
                 rightPlayerScore += 2
                 rightPlayerScoreLabel.text = "\(rightPlayerScore)"
-            }
+            case (.right, false):
+                player.toggle()
+                leftPlayerLabel.backgroundColor = .blue
+                rightPlayerLabel.backgroundColor = .clear
         }
         
         if (leftPlayerScore + rightPlayerScore) == cards.count {
