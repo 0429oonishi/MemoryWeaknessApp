@@ -53,11 +53,12 @@ final class MemoryWeaknessViewController: UIViewController {
     }
     
     private func configureCards() {
-        let imageNames = ["1", "2", "3", "4", "5"]
-        for _ in 0..<30 {
-            let imageName = imageNames.randomElement()!
+        let imageNames = [Int](1...15).map { String($0) }
+        imageNames.forEach { imageName in
+            cards.append(Card(image: imageName))
             cards.append(Card(image: imageName))
         }
+        cards.shuffle()
     }
     
     private func configureCollectionView() {
