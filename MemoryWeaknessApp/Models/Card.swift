@@ -9,4 +9,5 @@ import UIKit
 
 struct Card {
     let image: String
+    var isHide: Bool
 }

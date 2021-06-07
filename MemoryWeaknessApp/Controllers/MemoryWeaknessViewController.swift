@@ -34,8 +34,8 @@ final class MemoryWeaknessViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureCollectionView()
-        configureCards()
+        setupCollectionView()
+        setupCards()
         // あとでユーザーがどちらが先行かを選択できるようにする
         leftPlayerLabel.backgroundColor = .blue
         
@@ -48,26 +48,26 @@ final class MemoryWeaknessViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        configureCollectionViewLayout()
+        setupCollectionViewLayout()
         
     }
     
-    private func configureCards() {
+    private func setupCards() {
         let imageNames = [Int](1...15).map { String($0) }
         imageNames.forEach { imageName in
-            cards.append(Card(image: imageName))
-            cards.append(Card(image: imageName))
+            cards.append(Card(image: imageName, isHide: true))
+            cards.append(Card(image: imageName, isHide: true))
         }
         cards.shuffle()
     }
     
-    private func configureCollectionView() {
+    private func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.register(CardCollectionViewCell.nib,
                                 forCellWithReuseIdentifier: CardCollectionViewCell.identifier)
     }
     
-    private func configureCollectionViewLayout() {
+    private func setupCollectionViewLayout() {
         let layout = UICollectionViewFlowLayout()
         let itemSpacing: CGFloat = 2
         let horizontalItemCount: CGFloat = 5
@@ -94,36 +94,44 @@ extension MemoryWeaknessViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: CardCollectionViewCell.identifier,
             for: indexPath
-        ) as!CardCollectionViewCell
+        ) as! CardCollectionViewCell
         let card = cards[indexPath.item]
+        cell.tag = indexPath.row
         cell.configure(card: card)
-        cell.delegate = self
+        cell.onTapEvent = { [unowned self] (isCorrect, firstTag, secondTag) in
+            switch (player, isCorrect) {
+                case (.left, true):
+                    leftPlayerScore += 2
+                    leftPlayerScoreLabel.text = "\(leftPlayerScore)"
+                    cards[firstTag].isHide = true
+                    cards[secondTag].isHide = true
+                case (.left, false):
+                    player.toggle()
+                    leftPlayerLabel.backgroundColor = .clear
+                    rightPlayerLabel.backgroundColor = .blue
+                    cards[firstTag].isHide = false
+                    cards[secondTag].isHide = false
+                case (.right, true):
+                    rightPlayerScore += 2
+                    rightPlayerScoreLabel.text = "\(rightPlayerScore)"
+                    cards[firstTag].isHide = true
+                    cards[secondTag].isHide = true
+                case (.right, false):
+                    player.toggle()
+                    leftPlayerLabel.backgroundColor = .blue
+                    rightPlayerLabel.backgroundColor = .clear
+                    cards[firstTag].isHide = false
+                    cards[secondTag].isHide = false
+            }
+            if isCorrect {
+                cell.hideCards()
+            } else {
+                
+            }
+            if (leftPlayerScore + rightPlayerScore) == cards.count {
+                print("全てのカードがめくられた")
+            }
+        }
         return cell
     }
-}
-
-extension MemoryWeaknessViewController: CardCollectionViewCellDelegate {
-    func didTapped(isCorrect: Bool) {
-        switch (player, isCorrect) {
-            case (.left, true):
-                leftPlayerScore += 2
-                leftPlayerScoreLabel.text = "\(leftPlayerScore)"
-            case (.left, false):
-                player.toggle()
-                leftPlayerLabel.backgroundColor = .clear
-                rightPlayerLabel.backgroundColor = .blue
-            case (.right, true):
-                rightPlayerScore += 2
-                rightPlayerScoreLabel.text = "\(rightPlayerScore)"
-            case (.right, false):
-                player.toggle()
-                leftPlayerLabel.backgroundColor = .blue
-                rightPlayerLabel.backgroundColor = .clear
-        }
-        
-        if (leftPlayerScore + rightPlayerScore) == cards.count {
-            print("全てのカードがめくられた")
-        }
-    }
-    
 }
