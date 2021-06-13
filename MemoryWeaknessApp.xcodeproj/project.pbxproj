@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ABA4FD7526570C7000FB13AF /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA4FD7426570C7000FB13AF /* String+Extension.swift */; };
+		ABAFB6762675A9990095415F /* UserDefaultDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAFB6752675A9990095415F /* UserDefaultDataStore.swift */; };
 		ABF6DDAF26549015008BC281 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF6DDAE26549015008BC281 /* AppDelegate.swift */; };
 		ABF6DDB126549015008BC281 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF6DDB026549015008BC281 /* SceneDelegate.swift */; };
 		ABF6DDB326549015008BC281 /* MemoryWeaknessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF6DDB226549015008BC281 /* MemoryWeaknessViewController.swift */; };
@@ -20,7 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		ABA4FD7426570C7000FB13AF /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		ABAFB6752675A9990095415F /* UserDefaultDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultDataStore.swift; sourceTree = "<group>"; };
 		ABF6DDAB26549015008BC281 /* MemoryWeaknessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoryWeaknessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABF6DDAE26549015008BC281 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABF6DDB026549015008BC281 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,12 +45,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		ABA4FD7626570C7300FB13AF /* Extensions */ = {
+		ABAFB6772675A9B20095415F /* DataStore */ = {
 			isa = PBXGroup;
 			children = (
-				ABA4FD7426570C7000FB13AF /* String+Extension.swift */,
+				ABAFB6752675A9990095415F /* UserDefaultDataStore.swift */,
 			);
-			path = Extensions;
+			path = DataStore;
 			sourceTree = "<group>";
 		};
 		ABF6DDA226549015008BC281 = {
@@ -72,7 +72,6 @@
 		ABF6DDAD26549015008BC281 /* MemoryWeaknessApp */ = {
 			isa = PBXGroup;
 			children = (
-				ABA4FD7626570C7300FB13AF /* Extensions */,
 				ABF6DDCA26549304008BC281 /* Models */,
 				ABF6DDC8265492F5008BC281 /* Views */,
 				ABF6DDC9265492FD008BC281 /* Controllers */,
@@ -107,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				ABF6DDC6265491C4008BC281 /* Card.swift */,
+				ABAFB6772675A9B20095415F /* DataStore */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -182,11 +182,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABAFB6762675A9990095415F /* UserDefaultDataStore.swift in Sources */,
 				ABF6DDC42654919F008BC281 /* CardCollectionViewCell.swift in Sources */,
 				ABF6DDB326549015008BC281 /* MemoryWeaknessViewController.swift in Sources */,
 				ABF6DDC7265491C4008BC281 /* Card.swift in Sources */,
 				ABF6DDAF26549015008BC281 /* AppDelegate.swift in Sources */,
-				ABA4FD7526570C7000FB13AF /* String+Extension.swift in Sources */,
 				ABF6DDB126549015008BC281 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

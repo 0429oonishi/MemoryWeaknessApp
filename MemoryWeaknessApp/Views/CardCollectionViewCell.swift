@@ -27,7 +27,8 @@ final class CardCollectionViewCell: UICollectionViewCell {
     static var identifier: String { String(describing: self) }
     static var nib: UINib { UINib(nibName: String(describing: self), bundle: nil) }
     private var isDisplayed = true
-    var onTapEvent: TapEvent?
+    private let userDefault = UserDefault<UserDefautlsKeys.CardKeyType>()
+        var onTapEvent: TapEvent?
     var firstTag = 0
     var secondTag = 0
     
@@ -44,7 +45,7 @@ final class CardCollectionViewCell: UICollectionViewCell {
     }
     
     private func countCardDidSelected() {
-        let countNum = UserDefaults.standard.integer(forKey: .tappedCount)
+        let countNum = userDefault.int(forKey: .tappedCount)
         var tapCount = TapCount(rawValue: countNum) ?? .one
         let isCorrect = isCorrect()
         switch tapCount {
@@ -57,13 +58,13 @@ final class CardCollectionViewCell: UICollectionViewCell {
                 onTapEvent?(isCorrect, firstTag, secondTag)
         }
         tapCount.toggle()
-        UserDefaults.standard.set(tapCount.rawValue, forKey: .tappedCount)
+        userDefault.set(tapCount.rawValue, forKey: .tappedCount)
     }
     
     private func isCorrect() -> Bool {
         let newSelectedText = label.text ?? ""
-        let oldSelectedText = UserDefaults.standard.string(forKey: .selectedText) ?? ""
-        UserDefaults.standard.set(newSelectedText, forKey: .selectedText)
+        let oldSelectedText = userDefault.string(forKey: .selectedText) ?? ""
+        userDefault.set(newSelectedText, forKey: .selectedText)
         return newSelectedText == oldSelectedText
     }
     

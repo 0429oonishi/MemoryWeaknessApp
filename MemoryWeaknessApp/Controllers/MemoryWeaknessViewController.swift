@@ -30,7 +30,8 @@ final class MemoryWeaknessViewController: UIViewController {
     private var player: Player = .left
     private var leftPlayerScore = 0
     private var rightPlayerScore = 0
-    
+    private let userDefault = UserDefault<UserDefautlsKeys.CardKeyType>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,9 +41,9 @@ final class MemoryWeaknessViewController: UIViewController {
         leftPlayerLabel.backgroundColor = .blue
         
         // ビルドするたびに消す
-        UserDefaults.standard.removeObject(forKey: .selectedText)
-        UserDefaults.standard.removeObject(forKey: .tappedCount)
-        
+        userDefault.remove(forKey: .selectedText)
+        userDefault.remove(forKey: .tappedCount)
+
     }
     
     override func viewDidLayoutSubviews() {
